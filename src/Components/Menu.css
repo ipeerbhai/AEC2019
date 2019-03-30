@@ -1,0 +1,9 @@
+.tp-nav {
+    color: #302f31;
+    text-decoration: none;
+}
+
+.tp-nav:hover {
+    color: #7bff;
+    text-decoration: none;
+}

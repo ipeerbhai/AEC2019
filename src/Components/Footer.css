@@ -1,0 +1,25 @@
+.align-left {
+    text-align: left;
+}
+  
+.align-center {
+    text-align: center;
+}
+  
+.align-right {
+    text-align: right;
+}
+
+@media (max-width: 640px) {
+    .align-left {
+        text-align: center;
+    }
+    .align-center {
+        padding-top: 10px;
+        text-align: center;
+    }
+    .align-right {
+        padding-top: 10px;
+        text-align: center;
+    }
+}
