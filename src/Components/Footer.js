@@ -23,7 +23,7 @@ const Footer = (props) => {
                 <Container>
                     <Row>
                         <Col className="align-left">
-                            <h2>Accidont</h2>
+                            <h2>Damage Dogs</h2>
                             <p> Addy1<br />
                                 Addy2<br />
                                 Addy3</p>

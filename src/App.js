@@ -4,9 +4,7 @@ import Menu from './Components/Menu';
 import Footer from './Components/Footer';
 import './App.css';
 import LandingPage from './Components/LandingPage';
-import Product1Landing from './Components/Product1Landing';
-import Dashboard from './Components/Enterprise';
-import SiteDashboard from './Components/SiteDashboard';
+import BoomView from './Components/BoomView';
 import Login from './Components/Login';
 
 class App extends Component {
@@ -39,12 +37,8 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/products/thinkcyber/" render={() => { return (this.SingleComponentLoader(true, <Product1Landing />)); }} />
-        <Route path="/enterprise/dashboard/" render={() => { return (this.SingleComponentLoader(true, <Dashboard
-          tableName="Dashboard"
-        />)); }} />
-        <Route path="/enterprise/site-dashboard/" render={() => { return (this.SingleComponentLoader(true, <SiteDashboard
-          tableName="site27"
+        <Route path="/enterprise/boomView/" render={() => { return (this.SingleComponentLoader(true, <BoomView
+          startView="Boom"
         />)); }} />
         <Route path="/account/login/" render={() => { return (this.SingleComponentLoader(true, <Login />)); }} />
         <Route path="/" exact render={() => { return (this.SingleComponentLoader(true, <LandingPage />)); }} />

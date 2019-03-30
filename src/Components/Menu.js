@@ -14,13 +14,11 @@ import {
 } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUserAlt } from '@fortawesome/pro-regular-svg-icons';
-import { faUsdCircle } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import './Menu.css';
 
-library.add(faUserAlt, faUsdCircle, faShoppingCart);
+library.add(faShoppingCart, faUser);
 
 
 //----------------------------------------------------------------------------------
@@ -148,7 +146,7 @@ class Menu extends Component {
 
                             <UncontrolledDropdown nav inNavbar id="drpAccount" isOpen={this.state.accountOpen} onMouseOver={this.mouseEnter} onMouseLeave={this.mouseExit} toggle={() => { this.onDropDownToggle("drpAccount", this.state.accountOpen) }}>
                                 <DropdownToggle nav caret >
-                                    <FontAwesomeIcon icon={faUserAlt} alt="Account" />
+                                    <FontAwesomeIcon icon={faUser} alt="Account" />
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>
@@ -168,7 +166,7 @@ class Menu extends Component {
         return (
             <React.Fragment>
                 <Navbar color="dark" dark expand="md" className="fixed-top">
-                    <NavbarBrand href="/" className="text-white"><img src="/static/img/mediumLogo.png" className="img-fluid thumbnail-sm" alt="Company Logo" />Accidon't</NavbarBrand>
+                    <NavbarBrand href="/" className="text-white"><img src="/static/img/mediumLogo.png" className="img-fluid thumbnail-sm" alt="Company Logo" />DamageDogs</NavbarBrand>
                     {menu}
                 </Navbar>
                 <div style={{clear:"both", paddingBottom:"0.33rem"}}></div>
