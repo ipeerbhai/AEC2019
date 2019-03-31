@@ -37,9 +37,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/enterprise/boomView/" render={() => { return (this.SingleComponentLoader(true, <BoomView
-          startView="Boom"
-        />)); }} />
+        <Route path="/enterprise/boomView/" component={BoomView} />
         <Route path="/account/login/" render={() => { return (this.SingleComponentLoader(true, <Login />)); }} />
         <Route path="/" exact render={() => { return (this.SingleComponentLoader(true, <LandingPage />)); }} />
       </Switch>

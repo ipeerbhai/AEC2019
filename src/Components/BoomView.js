@@ -1,14 +1,20 @@
-import React from 'react';
-import 'aframe';
-import 'aframe-particle-system-component';
-import { Entity, Scene } from 'aframe-react';
+import React, {Component} from 'react';
 
-const BoomView = (props) => {
-    return (
-        <Scene>
-            <Entity obj-model="obj: url('/static/img/monkey.obj')"></Entity>
-        </Scene>
-    );
+class BoomView extends Component {
+    render() {
+        return (
+            <a-scene embedded arjs='sourceType: webcam;'>
+            <a-marker preset='hiro'>
+                <a-entity obj-model="obj: url('/static/img/monkey.obj'); 
+                  mtl: url(/static/img/monkey.mtl)">
+                </a-entity>
+    
+            </a-marker>
+            <a-entity camera>
+            </a-entity>
+        </a-scene>
+            );
+    }
 }
 
 export default BoomView;
