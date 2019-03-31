@@ -1,22 +1,101 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <meta charset=utf-8>
+    <title>My first three.js app</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%
+        }
+    </style>
 </head>
 
+<body>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let loadClosure = (file, scene, offset) => {
+            let loader = new THREE.GLTFLoader();
+            // Load a glTF resource
+            loader.load(
+                // resource URL
+                file,
+                // called when the resource is loaded
+                function (gltf) {
 
-<body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='sourceType: webcam;'>
-        <a-marker preset='hiro'>
-            <!-- Adding an OBJ file to an AR Project-->
-            <a-entity obj-model="obj: url(/static/img/monkey.obj); 
-              mtl: url(/static/img/monkey.mtl)">
-            </a-entity>
+                    // gltf.position.y = offset;
 
-        </a-marker>
-        <a-entity camera>
-        </a-entity>
-    </a-scene>
+                    scene.add(gltf.scene);
+
+                    // gltf.animations; // Array<THREE.AnimationClip>
+                    // gltf.scene; // THREE.Scene
+                    // gltf.scenes; // Array<THREE.Scene>
+                    // gltf.cameras; // Array<THREE.Camera>
+                    // gltf.asset; // Object
+
+                },
+                // called while loading is progressing
+                function (xhr) {
+
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+                },
+                // called when loading has errors
+                function (error) {
+
+                    console.log('An error happened');
+
+                }
+            );
+
+        };
+
+        loadClosure('/static/img/donut.glb', scene, 0);
+        loadClosure('/static/img/blueMonkey.glb', scene, 10);
+
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        let geometry = new THREE.BoxGeometry(2, 1, 1);
+        let light = new THREE.PointLight(0xffffff, 5, 100);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        let material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        let cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // let's add suzanne...
+
+        camera.position.z = 5;
+        camera.position.y = 5;
+        camera.rotation.x = -30 * Math.PI / 180;
+
+        let animate = function () {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+
+
+
 </body>
+
 </html>
+
+<html>
